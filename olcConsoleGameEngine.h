@@ -749,7 +749,7 @@ private:
 			wchar_t s[256];
 			swprintf_s(s, 256, L"OneLoneCoder.com - Console Game Engine - %s - FPS: %3.2f - %d ", m_sAppName.c_str(), 1.0f / fElapsedTime, events);
 			//SetConsoleTitle(s);
-			SetConsoleTitle(reinterpret_cast<LPCSTR>(s));
+			SetConsoleTitle(s);
 			WriteConsoleOutput(m_hConsole, m_bufScreen, { (short)m_nScreenWidth, (short)m_nScreenHeight }, { 0,0 }, &m_rectWindow);
 		}
 
@@ -786,8 +786,7 @@ protected:
 	int Error(wchar_t *msg)
 	{
 		wchar_t buf[256];
-		//FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, 256, NULL);
-		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), reinterpret_cast<LPSTR>(buf), 256, NULL);
+		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, 256, NULL);
 		SetConsoleActiveScreenBuffer(m_hOriginalConsole);
 		wprintf(L"ERROR: %s\n\t%s\n", msg, buf);
 		return -1;
