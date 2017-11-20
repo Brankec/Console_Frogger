@@ -19,6 +19,5 @@ struct Map
 		{ 2.0f,  L"  xx     xx       xx     xx      xx  xx xx       xx    xx       " }, //cars
 		{ 0.0f,  L"                                                                " }  //start
 	};
-	//int lScreenWidth = ScreenWidth();
 };
 
